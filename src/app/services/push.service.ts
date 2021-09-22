@@ -45,11 +45,7 @@ export class PushService {
     if (existePush) {
       return;
     }
-
     this.mensajes.unshift(payload);
-
-
-
   }
 
 
