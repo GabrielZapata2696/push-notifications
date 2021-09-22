@@ -17,7 +17,7 @@ export class PushService {
   ];
 
   pushListener = new EventEmitter<OSNotificationPayload>();
-
+  userID: string;
 
   constructor(
     private oneSignal: OneSignal,
@@ -41,6 +41,10 @@ export class PushService {
       // do something when a notification is opened
       // console.log('Notificación abierta', notificacion)
       await this.notificacionRecibida(notificacion.notification);
+    });
+
+    this.oneSignal.getIds().then(info => {
+      this.userID = info.userId;
     });
 
     this.oneSignal.endInit();
