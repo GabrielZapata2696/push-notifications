@@ -27,4 +27,12 @@ export class HomePage implements OnInit {
     this.mensajes = await this.pushService.getMensajesStorage();
   }
 
+  async borrrarMensaje() {
+    if (confirm('¿Está seguro de borrar todos los mensajes?')) {
+      await this.pushService.borrarMensajes();
+      this.mensajes = [];
+    }
+
+  }
+
 }
